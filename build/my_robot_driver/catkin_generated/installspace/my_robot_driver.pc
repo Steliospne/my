@@ -1,0 +1,8 @@
+prefix=/home/custombot/my_robot/install
+
+Name: my_robot_driver
+Description: Description of my_robot_driver
+Version: 0.0.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: rospy std_msgs message_runtime

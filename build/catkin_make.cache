@@ -1,0 +1,2 @@
+joy:my_robot_driver
+-DCATKIN_DEVEL_PREFIX=/home/custombot/my_robot/devel -DCMAKE_INSTALL_PREFIX=/home/custombot/my_robot/install -G Unix Makefiles

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+<node pkg="joy" type="joy_node" name="joy_node">
+</node>
+
+<node name="teleop_node" pkg="my_robot_driver" type="teleop.py" >
+  <param name="axis_linear" type="int" value="4"/>
+  <param name="axis_angular" type="int" value="3"/>
+  <param name="scale_linear" type="double" value="75.0"/>
+  <param name="scale_angular" type="double" value="75.0"/>
+</node>
+
+<node name="motor_driver" pkg="my_robot_driver" type="ros_motor_wrap.py">
+</node>
+
+</launch>
