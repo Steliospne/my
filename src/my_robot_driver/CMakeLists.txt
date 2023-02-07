@@ -16,7 +16,8 @@ catkin_python_setup()
 # Generate messages in the 'msg' folder
  add_message_files(
    FILES
-   Motor_Info.msg
+   Odom_data.msg
+   Buttons.msg
  )
 
 ## Generate services in the 'srv' folder
@@ -78,7 +79,6 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
    scripts/ros_motor_wrap.py
-   scripts/odometry.py
    scripts/teleop.py
    scripts/compute.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}

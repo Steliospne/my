@@ -1,8 +1,10 @@
 
 "use strict";
 
-let Motor_Info = require('./Motor_Info.js');
+let Buttons = require('./Buttons.js');
+let Odom_data = require('./Odom_data.js');
 
 module.exports = {
-  Motor_Info: Motor_Info,
+  Buttons: Buttons,
+  Odom_data: Odom_data,
 };

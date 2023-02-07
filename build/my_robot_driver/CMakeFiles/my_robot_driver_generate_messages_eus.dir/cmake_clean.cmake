@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/manifest.l"
-  "/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Motor_Info.l"
+  "/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Buttons.l"
+  "/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Odom_data.l"
   "CMakeFiles/my_robot_driver_generate_messages_eus"
 )
 

@@ -53,21 +53,28 @@ CMAKE_BINARY_DIR = /home/custombot/my_robot/build
 # Include the progress variables for this target.
 include my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_eus.dir/progress.make
 
-my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Motor_Info.l
+my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Odom_data.l
+my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Buttons.l
 my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/manifest.l
 
 
-/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Motor_Info.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Motor_Info.l: /home/custombot/my_robot/src/my_robot_driver/msg/Motor_Info.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from my_robot_driver/Motor_Info.msg"
-	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/custombot/my_robot/src/my_robot_driver/msg/Motor_Info.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg
+/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Odom_data.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Odom_data.l: /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from my_robot_driver/Odom_data.msg"
+	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg
+
+/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Buttons.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Buttons.l: /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from my_robot_driver/Buttons.msg"
+	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg
 
 /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for my_robot_driver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for my_robot_driver"
 	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver my_robot_driver std_msgs
 
 my_robot_driver_generate_messages_eus: my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_eus
-my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Motor_Info.l
+my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Odom_data.l
+my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/msg/Buttons.l
 my_robot_driver_generate_messages_eus: /home/custombot/my_robot/devel/share/roseus/ros/my_robot_driver/manifest.l
 my_robot_driver_generate_messages_eus: my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_eus.dir/build.make
 

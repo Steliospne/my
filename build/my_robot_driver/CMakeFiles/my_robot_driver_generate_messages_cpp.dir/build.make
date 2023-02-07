@@ -53,17 +53,25 @@ CMAKE_BINARY_DIR = /home/custombot/my_robot/build
 # Include the progress variables for this target.
 include my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_cpp.dir/progress.make
 
-my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_cpp: /home/custombot/my_robot/devel/include/my_robot_driver/Motor_Info.h
+my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_cpp: /home/custombot/my_robot/devel/include/my_robot_driver/Odom_data.h
+my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_cpp: /home/custombot/my_robot/devel/include/my_robot_driver/Buttons.h
 
 
-/home/custombot/my_robot/devel/include/my_robot_driver/Motor_Info.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
-/home/custombot/my_robot/devel/include/my_robot_driver/Motor_Info.h: /home/custombot/my_robot/src/my_robot_driver/msg/Motor_Info.msg
-/home/custombot/my_robot/devel/include/my_robot_driver/Motor_Info.h: /opt/ros/noetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from my_robot_driver/Motor_Info.msg"
-	cd /home/custombot/my_robot/src/my_robot_driver && /home/custombot/my_robot/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/custombot/my_robot/src/my_robot_driver/msg/Motor_Info.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/include/my_robot_driver -e /opt/ros/noetic/share/gencpp/cmake/..
+/home/custombot/my_robot/devel/include/my_robot_driver/Odom_data.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/custombot/my_robot/devel/include/my_robot_driver/Odom_data.h: /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg
+/home/custombot/my_robot/devel/include/my_robot_driver/Odom_data.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from my_robot_driver/Odom_data.msg"
+	cd /home/custombot/my_robot/src/my_robot_driver && /home/custombot/my_robot/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/include/my_robot_driver -e /opt/ros/noetic/share/gencpp/cmake/..
+
+/home/custombot/my_robot/devel/include/my_robot_driver/Buttons.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/custombot/my_robot/devel/include/my_robot_driver/Buttons.h: /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg
+/home/custombot/my_robot/devel/include/my_robot_driver/Buttons.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from my_robot_driver/Buttons.msg"
+	cd /home/custombot/my_robot/src/my_robot_driver && /home/custombot/my_robot/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/include/my_robot_driver -e /opt/ros/noetic/share/gencpp/cmake/..
 
 my_robot_driver_generate_messages_cpp: my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_cpp
-my_robot_driver_generate_messages_cpp: /home/custombot/my_robot/devel/include/my_robot_driver/Motor_Info.h
+my_robot_driver_generate_messages_cpp: /home/custombot/my_robot/devel/include/my_robot_driver/Odom_data.h
+my_robot_driver_generate_messages_cpp: /home/custombot/my_robot/devel/include/my_robot_driver/Buttons.h
 my_robot_driver_generate_messages_cpp: my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_cpp.dir/build.make
 
 .PHONY : my_robot_driver_generate_messages_cpp
