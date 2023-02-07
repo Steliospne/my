@@ -32,6 +32,7 @@ def wait_for_button_press():
 
 if __name__ == "__main__":
     rospy.init_node("compute_controler")
+    wait_for_button_press()
     wheel_radius = 0.0325
     rw = 0.12293
     x = 0
