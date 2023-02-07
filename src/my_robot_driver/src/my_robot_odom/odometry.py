@@ -19,9 +19,9 @@ class odometry():
 		self.meters_per_tick_left = (2 * math.pi * self.left_enc.radius) / (left_enc.ticks_p_revol)
 		
 
-	def step(self):
-		delta_ticks_r = (self.right_enc.counter - self.last_counter_r)
-		delta_ticks_l = (self.left_enc.counter - self.last_counter_l)
+	def step(self, left_dir=1, right_dir=1):
+		delta_ticks_r = (self.right_enc.counter - self.last_counter_r) * right_dir
+		delta_ticks_l = (self.left_enc.counter - self.last_counter_l) * left_dir
 
 		self.last_counter_r = self.right_enc.counter
 		self.last_counter_l = self.left_enc.counter

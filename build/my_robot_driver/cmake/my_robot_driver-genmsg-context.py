@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg;/home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg"
+messages_str = "/home/custombot/my_robot/src/my_robot_driver/msg/Motor_info.msg;/home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg;/home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg"
 services_str = ""
 pkg_name = "my_robot_driver"
 dependencies_str = "std_msgs"

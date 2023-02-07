@@ -43,6 +43,7 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/my_robot_driver/msg" TYPE FILE FILES
+    "/home/custombot/my_robot/src/my_robot_driver/msg/Motor_info.msg"
     "/home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg"
     "/home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg"
     )

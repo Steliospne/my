@@ -5,6 +5,8 @@
           Y
           THETA-VAL
           THETA
+          D_THETA-VAL
+          D_THETA
           COUNTER_L-VAL
           COUNTER_L
           COUNTER_R-VAL

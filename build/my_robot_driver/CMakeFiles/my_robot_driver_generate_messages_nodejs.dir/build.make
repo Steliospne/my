@@ -53,21 +53,28 @@ CMAKE_BINARY_DIR = /home/custombot/my_robot/build
 # Include the progress variables for this target.
 include my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_nodejs.dir/progress.make
 
+my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_nodejs: /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Motor_info.js
 my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_nodejs: /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Odom_data.js
 my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_nodejs: /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Buttons.js
 
 
+/home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Motor_info.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Motor_info.js: /home/custombot/my_robot/src/my_robot_driver/msg/Motor_info.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from my_robot_driver/Motor_info.msg"
+	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/custombot/my_robot/src/my_robot_driver/msg/Motor_info.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg
+
 /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Odom_data.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Odom_data.js: /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from my_robot_driver/Odom_data.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from my_robot_driver/Odom_data.msg"
 	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg
 
 /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Buttons.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Buttons.js: /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from my_robot_driver/Buttons.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from my_robot_driver/Buttons.msg"
 	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg
 
 my_robot_driver_generate_messages_nodejs: my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_nodejs
+my_robot_driver_generate_messages_nodejs: /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Motor_info.js
 my_robot_driver_generate_messages_nodejs: /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Odom_data.js
 my_robot_driver_generate_messages_nodejs: /home/custombot/my_robot/devel/share/gennodejs/ros/my_robot_driver/msg/Buttons.js
 my_robot_driver_generate_messages_nodejs: my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_nodejs.dir/build.make

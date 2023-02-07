@@ -21,6 +21,7 @@ class Odom_data {
       this.x = null;
       this.y = null;
       this.theta = null;
+      this.d_theta = null;
       this.counter_l = null;
       this.counter_r = null;
     }
@@ -42,6 +43,12 @@ class Odom_data {
       }
       else {
         this.theta = 0.0;
+      }
+      if (initObj.hasOwnProperty('d_theta')) {
+        this.d_theta = initObj.d_theta
+      }
+      else {
+        this.d_theta = 0.0;
       }
       if (initObj.hasOwnProperty('counter_l')) {
         this.counter_l = initObj.counter_l
@@ -66,6 +73,8 @@ class Odom_data {
     bufferOffset = _serializer.float64(obj.y, buffer, bufferOffset);
     // Serialize message field [theta]
     bufferOffset = _serializer.float64(obj.theta, buffer, bufferOffset);
+    // Serialize message field [d_theta]
+    bufferOffset = _serializer.float64(obj.d_theta, buffer, bufferOffset);
     // Serialize message field [counter_l]
     bufferOffset = _serializer.uint16(obj.counter_l, buffer, bufferOffset);
     // Serialize message field [counter_r]
@@ -83,6 +92,8 @@ class Odom_data {
     data.y = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [theta]
     data.theta = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [d_theta]
+    data.d_theta = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [counter_l]
     data.counter_l = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [counter_r]
@@ -91,7 +102,7 @@ class Odom_data {
   }
 
   static getMessageSize(object) {
-    return 28;
+    return 36;
   }
 
   static datatype() {
@@ -101,7 +112,7 @@ class Odom_data {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '44e713b4d9df4d172e1faa1169f3d407';
+    return '7cb54c3a5884441715ff3e84859cb042';
   }
 
   static messageDefinition() {
@@ -111,6 +122,7 @@ class Odom_data {
     float64 x
     float64 y
     float64 theta
+    float64 d_theta
     uint16 counter_l
     uint16 counter_r
     `;
@@ -141,6 +153,13 @@ class Odom_data {
     }
     else {
       resolved.theta = 0.0
+    }
+
+    if (msg.d_theta !== undefined) {
+      resolved.d_theta = msg.d_theta;
+    }
+    else {
+      resolved.d_theta = 0.0
     }
 
     if (msg.counter_l !== undefined) {

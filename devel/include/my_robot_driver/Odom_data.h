@@ -27,6 +27,7 @@ struct Odom_data_
     : x(0.0)
     , y(0.0)
     , theta(0.0)
+    , d_theta(0.0)
     , counter_l(0)
     , counter_r(0)  {
     }
@@ -34,6 +35,7 @@ struct Odom_data_
     : x(0.0)
     , y(0.0)
     , theta(0.0)
+    , d_theta(0.0)
     , counter_l(0)
     , counter_r(0)  {
   (void)_alloc;
@@ -49,6 +51,9 @@ struct Odom_data_
 
    typedef double _theta_type;
   _theta_type theta;
+
+   typedef double _d_theta_type;
+  _d_theta_type d_theta;
 
    typedef uint16_t _counter_l_type;
   _counter_l_type counter_l;
@@ -88,6 +93,7 @@ bool operator==(const ::my_robot_driver::Odom_data_<ContainerAllocator1> & lhs, 
   return lhs.x == rhs.x &&
     lhs.y == rhs.y &&
     lhs.theta == rhs.theta &&
+    lhs.d_theta == rhs.d_theta &&
     lhs.counter_l == rhs.counter_l &&
     lhs.counter_r == rhs.counter_r;
 }
@@ -146,12 +152,12 @@ struct MD5Sum< ::my_robot_driver::Odom_data_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "44e713b4d9df4d172e1faa1169f3d407";
+    return "7cb54c3a5884441715ff3e84859cb042";
   }
 
   static const char* value(const ::my_robot_driver::Odom_data_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x44e713b4d9df4d17ULL;
-  static const uint64_t static_value2 = 0x2e1faa1169f3d407ULL;
+  static const uint64_t static_value1 = 0x7cb54c3a58844417ULL;
+  static const uint64_t static_value2 = 0x15ff3e84859cb042ULL;
 };
 
 template<class ContainerAllocator>
@@ -174,6 +180,7 @@ struct Definition< ::my_robot_driver::Odom_data_<ContainerAllocator> >
 "float64 x\n"
 "float64 y\n"
 "float64 theta\n"
+"float64 d_theta\n"
 "uint16 counter_l\n"
 "uint16 counter_r\n"
 ;
@@ -197,6 +204,7 @@ namespace serialization
       stream.next(m.x);
       stream.next(m.y);
       stream.next(m.theta);
+      stream.next(m.d_theta);
       stream.next(m.counter_l);
       stream.next(m.counter_r);
     }
@@ -223,6 +231,8 @@ struct Printer< ::my_robot_driver::Odom_data_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.y);
     s << indent << "theta: ";
     Printer<double>::stream(s, indent + "  ", v.theta);
+    s << indent << "d_theta: ";
+    Printer<double>::stream(s, indent + "  ", v.d_theta);
     s << indent << "counter_l: ";
     Printer<uint16_t>::stream(s, indent + "  ", v.counter_l);
     s << indent << "counter_r: ";

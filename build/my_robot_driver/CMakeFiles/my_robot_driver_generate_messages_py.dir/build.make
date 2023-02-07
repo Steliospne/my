@@ -53,28 +53,36 @@ CMAKE_BINARY_DIR = /home/custombot/my_robot/build
 # Include the progress variables for this target.
 include my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_py.dir/progress.make
 
+my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Motor_info.py
 my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Odom_data.py
 my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Buttons.py
 my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/__init__.py
 
 
+/home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Motor_info.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Motor_info.py: /home/custombot/my_robot/src/my_robot_driver/msg/Motor_info.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG my_robot_driver/Motor_info"
+	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/custombot/my_robot/src/my_robot_driver/msg/Motor_info.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg
+
 /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Odom_data.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Odom_data.py: /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG my_robot_driver/Odom_data"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG my_robot_driver/Odom_data"
 	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/custombot/my_robot/src/my_robot_driver/msg/Odom_data.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg
 
 /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Buttons.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Buttons.py: /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG my_robot_driver/Buttons"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG my_robot_driver/Buttons"
 	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/custombot/my_robot/src/my_robot_driver/msg/Buttons.msg -Imy_robot_driver:/home/custombot/my_robot/src/my_robot_driver/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p my_robot_driver -o /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg
 
 /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/__init__.py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Motor_info.py
 /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/__init__.py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Odom_data.py
 /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/__init__.py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Buttons.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python msg __init__.py for my_robot_driver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/custombot/my_robot/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python msg __init__.py for my_robot_driver"
 	cd /home/custombot/my_robot/build/my_robot_driver && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg --initpy
 
 my_robot_driver_generate_messages_py: my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_py
+my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Motor_info.py
 my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Odom_data.py
 my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Buttons.py
 my_robot_driver_generate_messages_py: /home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/__init__.py

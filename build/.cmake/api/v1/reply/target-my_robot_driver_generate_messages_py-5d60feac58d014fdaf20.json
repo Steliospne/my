@@ -23,7 +23,7 @@
 			{
 				"command" : 2,
 				"file" : 2,
-				"line" : 38,
+				"line" : 39,
 				"parent" : 0
 			},
 			{
@@ -39,25 +39,31 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 221,
+				"line" : 264,
 				"parent" : 3
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 294,
+				"line" : 339,
 				"parent" : 3
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 230,
+				"line" : 275,
 				"parent" : 3
 			},
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 228,
+				"line" : 271,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 273,
 				"parent" : 3
 			}
 		]
@@ -74,6 +80,10 @@
 		},
 		{
 			"backtrace" : 7,
+			"id" : "_my_robot_driver_generate_messages_check_deps_Motor_info::@2379de0a373609a14b55"
+		},
+		{
+			"backtrace" : 8,
 			"id" : "_my_robot_driver_generate_messages_check_deps_Odom_data::@2379de0a373609a14b55"
 		}
 	],
@@ -100,7 +110,8 @@
 				1,
 				2,
 				3,
-				4
+				4,
+				5
 			]
 		}
 	],
@@ -116,6 +127,12 @@
 			"backtrace" : 0,
 			"isGenerated" : true,
 			"path" : "/home/custombot/my_robot/build/my_robot_driver/CMakeFiles/my_robot_driver_generate_messages_py.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/home/custombot/my_robot/devel/lib/python3/dist-packages/my_robot_driver/msg/_Motor_info.py.rule",
 			"sourceGroupIndex" : 1
 		},
 		{

@@ -60,16 +60,25 @@ class MotorDriver:
 
 		elif speed_x <= 9:
 			if speed_z > 0:
-				self.current_speed_r = speed_z 
-				self.current_speed_l = 0
+				self.current_speed_r = self.current_speed_l = speed_z
 				self.pwm_fr.ChangeDutyCycle(self.current_speed_r)
-				self.pwm_fl.ChangeDutyCycle(self.current_speed_l)
+				self.pwm_bl.ChangeDutyCycle(self.current_speed_l)
 			else:
-				self.current_speed_r = 0
-				self.current_speed_l = speed_z
-				self.pwm_fr.ChangeDutyCycle(abs(self.current_speed_r))
+				self.current_speed_r = self.current_speed_l = speed_z
+				self.pwm_br.ChangeDutyCycle(abs(self.current_speed_r))
 				self.pwm_fl.ChangeDutyCycle(abs(self.current_speed_l))
 		
+		else:
+			if speed_z > 0:
+				self.current_speed_r = speed_x
+				self.current_speed_l = speed_x - speed_z
+				self.pwm_fr.ChangeDutyCycle(abs(self.current_speed_r))
+				self.pwm_fl.ChangeDutyCycle(abs(self.current_speed_l))
+			else:
+				self.current_speed_r = speed_x - abs(speed_z)
+				self.current_speed_l = speed_x
+				self.pwm_fr.ChangeDutyCycle(abs(self.current_speed_r))
+				self.pwm_fl.ChangeDutyCycle(abs(self.current_speed_l))
 
 	def get_current_speed(self):
 		return self.current_speed_r, self.current_speed_l
