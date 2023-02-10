@@ -1,2 +1,1 @@
-float32 current_speed_l
-float32 current_speed_r
+string state

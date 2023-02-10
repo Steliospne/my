@@ -9,8 +9,19 @@ from my_robot_encoder.encoder import *
 from my_robot_odom.odometry import *
 
 def callback_dir(data):
-    last_right_dir = 1 if data.current_speed_r >= 0 else -1
-    last_left_dir = 1 if data.current_speed_l >= 0 else -1
+    global last_right_dir, last_left_dir
+    if data.state == "fw" :
+        last_right_dir = 1
+        last_left_dir = 1
+    elif data.state == "bw": 
+        last_right_dir = -1
+        last_left_dir = -1
+    elif data.state == "l": 
+        last_right_dir = 1
+        last_left_dir = -1
+    else: 
+        last_right_dir = -1
+        last_left_dir = 1
 
 def callback_button_command(data):
     if data.reset == 1:
@@ -32,11 +43,11 @@ if __name__ == "__main__":
     rospy.init_node("compute_controler")
     
     wheel_radius = 0.0335
-    rw = 0.12293
+    rw = 0.13560
     x = 0
     y = 0
     theta = 0
-    last_right_dir = 1
+    last_right_dir = 1 
     last_left_dir = 1
     right_wheel_enc = encoder(17, 40, wheel_radius)
     left_wheel_enc = encoder(27, 40, wheel_radius)
@@ -65,9 +76,9 @@ if __name__ == "__main__":
             #theta_d = (theta - (2 * math.pi * math.floor((theta + math.pi)/(2*math.pi))))
             theta_d = theta * 180/math.pi
 
-            #print('L/R:', left_wheel_enc.counter, right_wheel_enc.counter,
-            #'x:', x, 'y:', y, 'theta:', theta_d)
-    
+            print('L/R:', left_wheel_enc.counter, right_wheel_enc.counter,
+            'x:', x, 'y:', y, 'theta:', theta_d, "l_dir/r_dir" ,last_left_dir ,last_right_dir)
+            time.sleep(0.1)
     
     except rospy.ROSInterruptException:
         pass

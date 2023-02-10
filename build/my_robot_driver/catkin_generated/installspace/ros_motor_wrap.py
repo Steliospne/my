@@ -15,8 +15,8 @@ class MotorDriverROSWrapper:
         
         rospy.Subscriber("/move_command", Twist, self.callback_speed_command)
         rospy.Subscriber("/button_command", Buttons, self.callback_button_command)
-        self.motor_speed_pub = rospy.Publisher("/motor_info", Motor_info, queue_size=10)
-        rospy.Timer(rospy.Duration(1.0/publish_motor_info_frequency), self.publish_motor_speed)
+        self.motor_state_pub = rospy.Publisher("/motor_info", Motor_info, queue_size=10)
+        rospy.Timer(rospy.Duration(1.0/publish_motor_info_frequency), self.publish_motor_state)
 
     def stop(self):
         self.motor.stop()
@@ -27,10 +27,10 @@ class MotorDriverROSWrapper:
         elif data.stop == 1:
             rospy.signal_shutdown("EMERGENCY STOP!")
     
-    def publish_motor_speed(self, event=None):
+    def publish_moto_state(self, event=None):
         msg = Motor_info()
-        msg.current_speed_l, msg.current_speed_r = self.motor.get_current_speed()
-        self.motor_speed_pub.publish(msg)
+        msg.state = self.motor.get_state()
+        self.motor_state_pub.publish(msg)
 
     def callback_speed_command(self, data):
         self.motor.move_command(data.linear.x, data.angular.z)

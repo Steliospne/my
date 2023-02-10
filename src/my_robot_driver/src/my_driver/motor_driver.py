@@ -40,8 +40,17 @@ class MotorDriver:
 		self.current_speed_r = 0
 		self.current_speed_l = 0
 
+		self.state = 'fw'
+		
+
 
 	def move_command(self, speed_x, speed_z):
+
+		if -9 < speed_x < 9:
+			speed_x = 0
+
+		if -9 < speed_z < 9:
+			speed_z = 0
 		
 		if speed_z == 0:
 			self.current_speed_r = speed_x
@@ -52,21 +61,25 @@ class MotorDriver:
 				self.pwm_fl.ChangeDutyCycle(self.current_speed_l)
 				self.pwm_br.ChangeDutyCycle(0)
 				self.pwm_bl.ChangeDutyCycle(0)
+				self.state = 'fw'
 			else:
 				self.pwm_fr.ChangeDutyCycle(0)
 				self.pwm_fl.ChangeDutyCycle(0)
 				self.pwm_br.ChangeDutyCycle(abs(self.current_speed_r))
 				self.pwm_bl.ChangeDutyCycle(abs(self.current_speed_l))
+				self.state = 'bw'
 
-		elif speed_x <= 9:
+		elif speed_x == 0:
 			if speed_z > 0:
 				self.current_speed_r = self.current_speed_l = speed_z
 				self.pwm_fr.ChangeDutyCycle(self.current_speed_r)
 				self.pwm_bl.ChangeDutyCycle(self.current_speed_l)
+				self.state = 'l'
 			else:
 				self.current_speed_r = self.current_speed_l = speed_z
 				self.pwm_br.ChangeDutyCycle(abs(self.current_speed_r))
 				self.pwm_fl.ChangeDutyCycle(abs(self.current_speed_l))
+				self.state = 'r'
 		
 		else:
 			if speed_z > 0:
@@ -85,10 +98,7 @@ class MotorDriver:
 
 
 	def get_state(self):
-		if self.current_speed_l != 0 or self.current_speed_r != 0:
-			return 'Active'
-		else:
-			return 'Inactive'
+		return self.state
 		
 	def stop(self):
 		self.pwm_fr.ChangeDutyCycle(0)

@@ -24,22 +24,17 @@ struct Motor_info_
   typedef Motor_info_<ContainerAllocator> Type;
 
   Motor_info_()
-    : current_speed_l(0.0)
-    , current_speed_r(0.0)  {
+    : state()  {
     }
   Motor_info_(const ContainerAllocator& _alloc)
-    : current_speed_l(0.0)
-    , current_speed_r(0.0)  {
+    : state(_alloc)  {
   (void)_alloc;
     }
 
 
 
-   typedef float _current_speed_l_type;
-  _current_speed_l_type current_speed_l;
-
-   typedef float _current_speed_r_type;
-  _current_speed_r_type current_speed_r;
+   typedef std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> _state_type;
+  _state_type state;
 
 
 
@@ -70,8 +65,7 @@ return s;
 template<typename ContainerAllocator1, typename ContainerAllocator2>
 bool operator==(const ::my_robot_driver::Motor_info_<ContainerAllocator1> & lhs, const ::my_robot_driver::Motor_info_<ContainerAllocator2> & rhs)
 {
-  return lhs.current_speed_l == rhs.current_speed_l &&
-    lhs.current_speed_r == rhs.current_speed_r;
+  return lhs.state == rhs.state;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -104,12 +98,12 @@ struct IsMessage< ::my_robot_driver::Motor_info_<ContainerAllocator> const>
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::my_robot_driver::Motor_info_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::my_robot_driver::Motor_info_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -128,12 +122,12 @@ struct MD5Sum< ::my_robot_driver::Motor_info_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "25e2b75d3711d982ee897267a66f9df5";
+    return "af6d3a99f0fbeb66d3248fa4b3e675fb";
   }
 
   static const char* value(const ::my_robot_driver::Motor_info_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x25e2b75d3711d982ULL;
-  static const uint64_t static_value2 = 0xee897267a66f9df5ULL;
+  static const uint64_t static_value1 = 0xaf6d3a99f0fbeb66ULL;
+  static const uint64_t static_value2 = 0xd3248fa4b3e675fbULL;
 };
 
 template<class ContainerAllocator>
@@ -152,8 +146,7 @@ struct Definition< ::my_robot_driver::Motor_info_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32 current_speed_l\n"
-"float32 current_speed_r\n"
+    return "string state\n"
 ;
   }
 
@@ -172,8 +165,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.current_speed_l);
-      stream.next(m.current_speed_r);
+      stream.next(m.state);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -192,10 +184,8 @@ struct Printer< ::my_robot_driver::Motor_info_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::my_robot_driver::Motor_info_<ContainerAllocator>& v)
   {
-    s << indent << "current_speed_l: ";
-    Printer<float>::stream(s, indent + "  ", v.current_speed_l);
-    s << indent << "current_speed_r: ";
-    Printer<float>::stream(s, indent + "  ", v.current_speed_r);
+    s << indent << "state: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>>::stream(s, indent + "  ", v.state);
   }
 };
 

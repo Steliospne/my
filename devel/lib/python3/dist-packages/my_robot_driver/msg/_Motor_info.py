@@ -8,13 +8,12 @@ import struct
 
 
 class Motor_info(genpy.Message):
-  _md5sum = "25e2b75d3711d982ee897267a66f9df5"
+  _md5sum = "af6d3a99f0fbeb66d3248fa4b3e675fb"
   _type = "my_robot_driver/Motor_info"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """float32 current_speed_l
-float32 current_speed_r"""
-  __slots__ = ['current_speed_l','current_speed_r']
-  _slot_types = ['float32','float32']
+  _full_text = """string state"""
+  __slots__ = ['state']
+  _slot_types = ['string']
 
   def __init__(self, *args, **kwds):
     """
@@ -24,7 +23,7 @@ float32 current_speed_r"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       current_speed_l,current_speed_r
+       state
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -33,13 +32,10 @@ float32 current_speed_r"""
     if args or kwds:
       super(Motor_info, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
-      if self.current_speed_l is None:
-        self.current_speed_l = 0.
-      if self.current_speed_r is None:
-        self.current_speed_r = 0.
+      if self.state is None:
+        self.state = ''
     else:
-      self.current_speed_l = 0.
-      self.current_speed_r = 0.
+      self.state = ''
 
   def _get_types(self):
     """
@@ -53,8 +49,12 @@ float32 current_speed_r"""
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self
-      buff.write(_get_struct_2f().pack(_x.current_speed_l, _x.current_speed_r))
+      _x = self.state
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -67,10 +67,15 @@ float32 current_speed_r"""
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
       start = end
-      end += 8
-      (_x.current_speed_l, _x.current_speed_r,) = _get_struct_2f().unpack(str[start:end])
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -83,8 +88,12 @@ float32 current_speed_r"""
     :param numpy: numpy python module
     """
     try:
-      _x = self
-      buff.write(_get_struct_2f().pack(_x.current_speed_l, _x.current_speed_r))
+      _x = self.state
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -98,10 +107,15 @@ float32 current_speed_r"""
       codecs.lookup_error("rosmsg").msg_type = self._type
     try:
       end = 0
-      _x = self
       start = end
-      end += 8
-      (_x.current_speed_l, _x.current_speed_r,) = _get_struct_2f().unpack(str[start:end])
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -110,9 +124,3 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2f = None
-def _get_struct_2f():
-    global _struct_2f
-    if _struct_2f is None:
-        _struct_2f = struct.Struct("<2f")
-    return _struct_2f

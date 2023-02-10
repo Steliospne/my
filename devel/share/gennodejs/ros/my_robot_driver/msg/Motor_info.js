@@ -18,31 +18,22 @@ class Motor_info {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.current_speed_l = null;
-      this.current_speed_r = null;
+      this.state = null;
     }
     else {
-      if (initObj.hasOwnProperty('current_speed_l')) {
-        this.current_speed_l = initObj.current_speed_l
+      if (initObj.hasOwnProperty('state')) {
+        this.state = initObj.state
       }
       else {
-        this.current_speed_l = 0.0;
-      }
-      if (initObj.hasOwnProperty('current_speed_r')) {
-        this.current_speed_r = initObj.current_speed_r
-      }
-      else {
-        this.current_speed_r = 0.0;
+        this.state = '';
       }
     }
   }
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type Motor_info
-    // Serialize message field [current_speed_l]
-    bufferOffset = _serializer.float32(obj.current_speed_l, buffer, bufferOffset);
-    // Serialize message field [current_speed_r]
-    bufferOffset = _serializer.float32(obj.current_speed_r, buffer, bufferOffset);
+    // Serialize message field [state]
+    bufferOffset = _serializer.string(obj.state, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -50,15 +41,15 @@ class Motor_info {
     //deserializes a message object of type Motor_info
     let len;
     let data = new Motor_info(null);
-    // Deserialize message field [current_speed_l]
-    data.current_speed_l = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [current_speed_r]
-    data.current_speed_r = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [state]
+    data.state = _deserializer.string(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 8;
+    let length = 0;
+    length += _getByteLength(object.state);
+    return length + 4;
   }
 
   static datatype() {
@@ -68,14 +59,13 @@ class Motor_info {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '25e2b75d3711d982ee897267a66f9df5';
+    return 'af6d3a99f0fbeb66d3248fa4b3e675fb';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    float32 current_speed_l
-    float32 current_speed_r
+    string state
     `;
   }
 
@@ -85,18 +75,11 @@ class Motor_info {
       msg = {};
     }
     const resolved = new Motor_info(null);
-    if (msg.current_speed_l !== undefined) {
-      resolved.current_speed_l = msg.current_speed_l;
+    if (msg.state !== undefined) {
+      resolved.state = msg.state;
     }
     else {
-      resolved.current_speed_l = 0.0
-    }
-
-    if (msg.current_speed_r !== undefined) {
-      resolved.current_speed_r = msg.current_speed_r;
-    }
-    else {
-      resolved.current_speed_r = 0.0
+      resolved.state = ''
     }
 
     return resolved;

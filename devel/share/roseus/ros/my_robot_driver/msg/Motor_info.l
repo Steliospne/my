@@ -14,61 +14,49 @@
 
 (defclass my_robot_driver::Motor_info
   :super ros::object
-  :slots (_current_speed_l _current_speed_r ))
+  :slots (_state ))
 
 (defmethod my_robot_driver::Motor_info
   (:init
    (&key
-    ((:current_speed_l __current_speed_l) 0.0)
-    ((:current_speed_r __current_speed_r) 0.0)
+    ((:state __state) "")
     )
    (send-super :init)
-   (setq _current_speed_l (float __current_speed_l))
-   (setq _current_speed_r (float __current_speed_r))
+   (setq _state (string __state))
    self)
-  (:current_speed_l
-   (&optional __current_speed_l)
-   (if __current_speed_l (setq _current_speed_l __current_speed_l)) _current_speed_l)
-  (:current_speed_r
-   (&optional __current_speed_r)
-   (if __current_speed_r (setq _current_speed_r __current_speed_r)) _current_speed_r)
+  (:state
+   (&optional __state)
+   (if __state (setq _state __state)) _state)
   (:serialization-length
    ()
    (+
-    ;; float32 _current_speed_l
-    4
-    ;; float32 _current_speed_r
-    4
+    ;; string _state
+    4 (length _state)
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; float32 _current_speed_l
-       (sys::poke _current_speed_l (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; float32 _current_speed_r
-       (sys::poke _current_speed_r (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; string _state
+       (write-long (length _state) s) (princ _state s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; float32 _current_speed_l
-     (setq _current_speed_l (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; float32 _current_speed_r
-     (setq _current_speed_r (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; string _state
+     (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _state (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
    ;;
    self)
   )
 
-(setf (get my_robot_driver::Motor_info :md5sum-) "25e2b75d3711d982ee897267a66f9df5")
+(setf (get my_robot_driver::Motor_info :md5sum-) "af6d3a99f0fbeb66d3248fa4b3e675fb")
 (setf (get my_robot_driver::Motor_info :datatype-) "my_robot_driver/Motor_info")
 (setf (get my_robot_driver::Motor_info :definition-)
-      "float32 current_speed_l
-float32 current_speed_r
+      "string state
 ")
 
 
 
-(provide :my_robot_driver/Motor_info "25e2b75d3711d982ee897267a66f9df5")
+(provide :my_robot_driver/Motor_info "af6d3a99f0fbeb66d3248fa4b3e675fb")
 
 
