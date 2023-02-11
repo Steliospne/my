@@ -22,6 +22,8 @@ class Odom_data {
       this.y = null;
       this.theta = null;
       this.d_theta = null;
+      this.vel_l = null;
+      this.vel_r = null;
       this.counter_l = null;
       this.counter_r = null;
     }
@@ -50,6 +52,18 @@ class Odom_data {
       else {
         this.d_theta = 0.0;
       }
+      if (initObj.hasOwnProperty('vel_l')) {
+        this.vel_l = initObj.vel_l
+      }
+      else {
+        this.vel_l = 0.0;
+      }
+      if (initObj.hasOwnProperty('vel_r')) {
+        this.vel_r = initObj.vel_r
+      }
+      else {
+        this.vel_r = 0.0;
+      }
       if (initObj.hasOwnProperty('counter_l')) {
         this.counter_l = initObj.counter_l
       }
@@ -75,6 +89,10 @@ class Odom_data {
     bufferOffset = _serializer.float64(obj.theta, buffer, bufferOffset);
     // Serialize message field [d_theta]
     bufferOffset = _serializer.float64(obj.d_theta, buffer, bufferOffset);
+    // Serialize message field [vel_l]
+    bufferOffset = _serializer.float64(obj.vel_l, buffer, bufferOffset);
+    // Serialize message field [vel_r]
+    bufferOffset = _serializer.float64(obj.vel_r, buffer, bufferOffset);
     // Serialize message field [counter_l]
     bufferOffset = _serializer.uint16(obj.counter_l, buffer, bufferOffset);
     // Serialize message field [counter_r]
@@ -94,6 +112,10 @@ class Odom_data {
     data.theta = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [d_theta]
     data.d_theta = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [vel_l]
+    data.vel_l = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [vel_r]
+    data.vel_r = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [counter_l]
     data.counter_l = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [counter_r]
@@ -102,7 +124,7 @@ class Odom_data {
   }
 
   static getMessageSize(object) {
-    return 36;
+    return 52;
   }
 
   static datatype() {
@@ -112,7 +134,7 @@ class Odom_data {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '7cb54c3a5884441715ff3e84859cb042';
+    return '4e66c9f8493a867e4988030ed11fbd23';
   }
 
   static messageDefinition() {
@@ -123,6 +145,8 @@ class Odom_data {
     float64 y
     float64 theta
     float64 d_theta
+    float64 vel_l
+    float64 vel_r
     uint16 counter_l
     uint16 counter_r
     `;
@@ -160,6 +184,20 @@ class Odom_data {
     }
     else {
       resolved.d_theta = 0.0
+    }
+
+    if (msg.vel_l !== undefined) {
+      resolved.vel_l = msg.vel_l;
+    }
+    else {
+      resolved.vel_l = 0.0
+    }
+
+    if (msg.vel_r !== undefined) {
+      resolved.vel_r = msg.vel_r;
+    }
+    else {
+      resolved.vel_r = 0.0
     }
 
     if (msg.counter_l !== undefined) {

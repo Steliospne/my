@@ -8,7 +8,7 @@ import struct
 
 
 class Odom_data(genpy.Message):
-  _md5sum = "7cb54c3a5884441715ff3e84859cb042"
+  _md5sum = "4e66c9f8493a867e4988030ed11fbd23"
   _type = "my_robot_driver/Odom_data"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """
@@ -16,10 +16,12 @@ float64 x
 float64 y
 float64 theta
 float64 d_theta
+float64 vel_l
+float64 vel_r
 uint16 counter_l
 uint16 counter_r"""
-  __slots__ = ['x','y','theta','d_theta','counter_l','counter_r']
-  _slot_types = ['float64','float64','float64','float64','uint16','uint16']
+  __slots__ = ['x','y','theta','d_theta','vel_l','vel_r','counter_l','counter_r']
+  _slot_types = ['float64','float64','float64','float64','float64','float64','uint16','uint16']
 
   def __init__(self, *args, **kwds):
     """
@@ -29,7 +31,7 @@ uint16 counter_r"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       x,y,theta,d_theta,counter_l,counter_r
+       x,y,theta,d_theta,vel_l,vel_r,counter_l,counter_r
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -46,6 +48,10 @@ uint16 counter_r"""
         self.theta = 0.
       if self.d_theta is None:
         self.d_theta = 0.
+      if self.vel_l is None:
+        self.vel_l = 0.
+      if self.vel_r is None:
+        self.vel_r = 0.
       if self.counter_l is None:
         self.counter_l = 0
       if self.counter_r is None:
@@ -55,6 +61,8 @@ uint16 counter_r"""
       self.y = 0.
       self.theta = 0.
       self.d_theta = 0.
+      self.vel_l = 0.
+      self.vel_r = 0.
       self.counter_l = 0
       self.counter_r = 0
 
@@ -71,7 +79,7 @@ uint16 counter_r"""
     """
     try:
       _x = self
-      buff.write(_get_struct_4d2H().pack(_x.x, _x.y, _x.theta, _x.d_theta, _x.counter_l, _x.counter_r))
+      buff.write(_get_struct_6d2H().pack(_x.x, _x.y, _x.theta, _x.d_theta, _x.vel_l, _x.vel_r, _x.counter_l, _x.counter_r))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -86,8 +94,8 @@ uint16 counter_r"""
       end = 0
       _x = self
       start = end
-      end += 36
-      (_x.x, _x.y, _x.theta, _x.d_theta, _x.counter_l, _x.counter_r,) = _get_struct_4d2H().unpack(str[start:end])
+      end += 52
+      (_x.x, _x.y, _x.theta, _x.d_theta, _x.vel_l, _x.vel_r, _x.counter_l, _x.counter_r,) = _get_struct_6d2H().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -101,7 +109,7 @@ uint16 counter_r"""
     """
     try:
       _x = self
-      buff.write(_get_struct_4d2H().pack(_x.x, _x.y, _x.theta, _x.d_theta, _x.counter_l, _x.counter_r))
+      buff.write(_get_struct_6d2H().pack(_x.x, _x.y, _x.theta, _x.d_theta, _x.vel_l, _x.vel_r, _x.counter_l, _x.counter_r))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -117,8 +125,8 @@ uint16 counter_r"""
       end = 0
       _x = self
       start = end
-      end += 36
-      (_x.x, _x.y, _x.theta, _x.d_theta, _x.counter_l, _x.counter_r,) = _get_struct_4d2H().unpack(str[start:end])
+      end += 52
+      (_x.x, _x.y, _x.theta, _x.d_theta, _x.vel_l, _x.vel_r, _x.counter_l, _x.counter_r,) = _get_struct_6d2H().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -127,9 +135,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_4d2H = None
-def _get_struct_4d2H():
-    global _struct_4d2H
-    if _struct_4d2H is None:
-        _struct_4d2H = struct.Struct("<4d2H")
-    return _struct_4d2H
+_struct_6d2H = None
+def _get_struct_6d2H():
+    global _struct_6d2H
+    if _struct_6d2H is None:
+        _struct_6d2H = struct.Struct("<6d2H")
+    return _struct_6d2H

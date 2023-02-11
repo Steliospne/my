@@ -14,7 +14,7 @@
 
 (defclass my_robot_driver::Odom_data
   :super ros::object
-  :slots (_x _y _theta _d_theta _counter_l _counter_r ))
+  :slots (_x _y _theta _d_theta _vel_l _vel_r _counter_l _counter_r ))
 
 (defmethod my_robot_driver::Odom_data
   (:init
@@ -23,6 +23,8 @@
     ((:y __y) 0.0)
     ((:theta __theta) 0.0)
     ((:d_theta __d_theta) 0.0)
+    ((:vel_l __vel_l) 0.0)
+    ((:vel_r __vel_r) 0.0)
     ((:counter_l __counter_l) 0)
     ((:counter_r __counter_r) 0)
     )
@@ -31,6 +33,8 @@
    (setq _y (float __y))
    (setq _theta (float __theta))
    (setq _d_theta (float __d_theta))
+   (setq _vel_l (float __vel_l))
+   (setq _vel_r (float __vel_r))
    (setq _counter_l (round __counter_l))
    (setq _counter_r (round __counter_r))
    self)
@@ -46,6 +50,12 @@
   (:d_theta
    (&optional __d_theta)
    (if __d_theta (setq _d_theta __d_theta)) _d_theta)
+  (:vel_l
+   (&optional __vel_l)
+   (if __vel_l (setq _vel_l __vel_l)) _vel_l)
+  (:vel_r
+   (&optional __vel_r)
+   (if __vel_r (setq _vel_r __vel_r)) _vel_r)
   (:counter_l
    (&optional __counter_l)
    (if __counter_l (setq _counter_l __counter_l)) _counter_l)
@@ -62,6 +72,10 @@
     ;; float64 _theta
     8
     ;; float64 _d_theta
+    8
+    ;; float64 _vel_l
+    8
+    ;; float64 _vel_r
     8
     ;; uint16 _counter_l
     2
@@ -80,6 +94,10 @@
        (sys::poke _theta (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _d_theta
        (sys::poke _d_theta (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _vel_l
+       (sys::poke _vel_l (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _vel_r
+       (sys::poke _vel_r (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; uint16 _counter_l
        (write-word _counter_l s)
      ;; uint16 _counter_r
@@ -96,6 +114,10 @@
      (setq _theta (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _d_theta
      (setq _d_theta (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _vel_l
+     (setq _vel_l (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _vel_r
+     (setq _vel_r (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; uint16 _counter_l
      (setq _counter_l (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;; uint16 _counter_r
@@ -104,7 +126,7 @@
    self)
   )
 
-(setf (get my_robot_driver::Odom_data :md5sum-) "7cb54c3a5884441715ff3e84859cb042")
+(setf (get my_robot_driver::Odom_data :md5sum-) "4e66c9f8493a867e4988030ed11fbd23")
 (setf (get my_robot_driver::Odom_data :datatype-) "my_robot_driver/Odom_data")
 (setf (get my_robot_driver::Odom_data :definition-)
       "
@@ -112,12 +134,14 @@ float64 x
 float64 y
 float64 theta
 float64 d_theta
+float64 vel_l
+float64 vel_r
 uint16 counter_l
 uint16 counter_r
 ")
 
 
 
-(provide :my_robot_driver/Odom_data "7cb54c3a5884441715ff3e84859cb042")
+(provide :my_robot_driver/Odom_data "4e66c9f8493a867e4988030ed11fbd23")
 
 

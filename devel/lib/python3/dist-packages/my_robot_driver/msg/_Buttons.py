@@ -8,15 +8,16 @@ import struct
 
 
 class Buttons(genpy.Message):
-  _md5sum = "d5eb4537e3fc1caf4d9efa0e1fbc2aa5"
+  _md5sum = "a70f11db20213bb4fddba7dccd32ec5f"
   _type = "my_robot_driver/Buttons"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """
 bool reset
 bool mode
-bool stop"""
-  __slots__ = ['reset','mode','stop']
-  _slot_types = ['bool','bool','bool']
+bool stop
+bool debug"""
+  __slots__ = ['reset','mode','stop','debug']
+  _slot_types = ['bool','bool','bool','bool']
 
   def __init__(self, *args, **kwds):
     """
@@ -26,7 +27,7 @@ bool stop"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       reset,mode,stop
+       reset,mode,stop,debug
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -41,10 +42,13 @@ bool stop"""
         self.mode = False
       if self.stop is None:
         self.stop = False
+      if self.debug is None:
+        self.debug = False
     else:
       self.reset = False
       self.mode = False
       self.stop = False
+      self.debug = False
 
   def _get_types(self):
     """
@@ -59,7 +63,7 @@ bool stop"""
     """
     try:
       _x = self
-      buff.write(_get_struct_3B().pack(_x.reset, _x.mode, _x.stop))
+      buff.write(_get_struct_4B().pack(_x.reset, _x.mode, _x.stop, _x.debug))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -74,11 +78,12 @@ bool stop"""
       end = 0
       _x = self
       start = end
-      end += 3
-      (_x.reset, _x.mode, _x.stop,) = _get_struct_3B().unpack(str[start:end])
+      end += 4
+      (_x.reset, _x.mode, _x.stop, _x.debug,) = _get_struct_4B().unpack(str[start:end])
       self.reset = bool(self.reset)
       self.mode = bool(self.mode)
       self.stop = bool(self.stop)
+      self.debug = bool(self.debug)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -92,7 +97,7 @@ bool stop"""
     """
     try:
       _x = self
-      buff.write(_get_struct_3B().pack(_x.reset, _x.mode, _x.stop))
+      buff.write(_get_struct_4B().pack(_x.reset, _x.mode, _x.stop, _x.debug))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -108,11 +113,12 @@ bool stop"""
       end = 0
       _x = self
       start = end
-      end += 3
-      (_x.reset, _x.mode, _x.stop,) = _get_struct_3B().unpack(str[start:end])
+      end += 4
+      (_x.reset, _x.mode, _x.stop, _x.debug,) = _get_struct_4B().unpack(str[start:end])
       self.reset = bool(self.reset)
       self.mode = bool(self.mode)
       self.stop = bool(self.stop)
+      self.debug = bool(self.debug)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -121,9 +127,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_3B = None
-def _get_struct_3B():
-    global _struct_3B
-    if _struct_3B is None:
-        _struct_3B = struct.Struct("<3B")
-    return _struct_3B
+_struct_4B = None
+def _get_struct_4B():
+    global _struct_4B
+    if _struct_4B is None:
+        _struct_4B = struct.Struct("<4B")
+    return _struct_4B

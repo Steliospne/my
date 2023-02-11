@@ -9,14 +9,17 @@
   <param name="button_x" type="int" value="2"/>
   <param name="button_a" type="int" value="0"/>
   <param name="button_b" type="int" value="1"/>
+  <param name="button_y" type="int" value="3"/>
   <param name="axis_linear" type="int" value="4"/>
   <param name="axis_angular" type="int" value="3"/>
   <param name="scale_linear" type="double" value="75.0"/>
   <param name="scale_angular" type="double" value="75.0"/>
 </node>
 
-<node name="motor_driver" pkg="my_robot_driver" type="ros_motor_wrap.py"></node>
+<node name="motor_driver" pkg="my_robot_driver" type="ros_motor_wrap.py" output="screen"></node>
 
 <node name="compute_controler" pkg="my_robot_driver" type="compute.py" output="screen"></node>
+
+<node name="autonomous_node" pkg="my_robot_driver" type="PIDcontrol.py" output="screen"></node>
 
 </launch>

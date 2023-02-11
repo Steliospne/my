@@ -27,6 +27,16 @@
     :initarg :d_theta
     :type cl:float
     :initform 0.0)
+   (vel_l
+    :reader vel_l
+    :initarg :vel_l
+    :type cl:float
+    :initform 0.0)
+   (vel_r
+    :reader vel_r
+    :initarg :vel_r
+    :type cl:float
+    :initform 0.0)
    (counter_l
     :reader counter_l
     :initarg :counter_l
@@ -67,6 +77,16 @@
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader my_robot_driver-msg:d_theta-val is deprecated.  Use my_robot_driver-msg:d_theta instead.")
   (d_theta m))
 
+(cl:ensure-generic-function 'vel_l-val :lambda-list '(m))
+(cl:defmethod vel_l-val ((m <Odom_data>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader my_robot_driver-msg:vel_l-val is deprecated.  Use my_robot_driver-msg:vel_l instead.")
+  (vel_l m))
+
+(cl:ensure-generic-function 'vel_r-val :lambda-list '(m))
+(cl:defmethod vel_r-val ((m <Odom_data>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader my_robot_driver-msg:vel_r-val is deprecated.  Use my_robot_driver-msg:vel_r instead.")
+  (vel_r m))
+
 (cl:ensure-generic-function 'counter_l-val :lambda-list '(m))
 (cl:defmethod counter_l-val ((m <Odom_data>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader my_robot_driver-msg:counter_l-val is deprecated.  Use my_robot_driver-msg:counter_l instead.")
@@ -106,6 +126,24 @@
     (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
   (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'd_theta))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'vel_l))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'vel_r))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
@@ -161,6 +199,26 @@
       (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'd_theta) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'vel_l) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'vel_r) (roslisp-utils:decode-double-float-bits bits)))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'counter_l)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'counter_l)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'counter_r)) (cl:read-byte istream))
@@ -175,18 +233,20 @@
   "my_robot_driver/Odom_data")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<Odom_data>)))
   "Returns md5sum for a message object of type '<Odom_data>"
-  "7cb54c3a5884441715ff3e84859cb042")
+  "4e66c9f8493a867e4988030ed11fbd23")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'Odom_data)))
   "Returns md5sum for a message object of type 'Odom_data"
-  "7cb54c3a5884441715ff3e84859cb042")
+  "4e66c9f8493a867e4988030ed11fbd23")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Odom_data>)))
   "Returns full string definition for message of type '<Odom_data>"
-  (cl:format cl:nil "~%float64 x~%float64 y~%float64 theta~%float64 d_theta~%uint16 counter_l~%uint16 counter_r~%~%"))
+  (cl:format cl:nil "~%float64 x~%float64 y~%float64 theta~%float64 d_theta~%float64 vel_l~%float64 vel_r~%uint16 counter_l~%uint16 counter_r~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Odom_data)))
   "Returns full string definition for message of type 'Odom_data"
-  (cl:format cl:nil "~%float64 x~%float64 y~%float64 theta~%float64 d_theta~%uint16 counter_l~%uint16 counter_r~%~%"))
+  (cl:format cl:nil "~%float64 x~%float64 y~%float64 theta~%float64 d_theta~%float64 vel_l~%float64 vel_r~%uint16 counter_l~%uint16 counter_r~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Odom_data>))
   (cl:+ 0
+     8
+     8
      8
      8
      8
@@ -201,6 +261,8 @@
     (cl:cons ':y (y msg))
     (cl:cons ':theta (theta msg))
     (cl:cons ':d_theta (d_theta msg))
+    (cl:cons ':vel_l (vel_l msg))
+    (cl:cons ':vel_r (vel_r msg))
     (cl:cons ':counter_l (counter_l msg))
     (cl:cons ':counter_r (counter_r msg))
 ))

@@ -11,6 +11,7 @@ class Teleop:
         self.button_x = rospy.get_param("~button_x", 2)
         self.button_a = rospy.get_param("~button_a", 0)
         self.button_b = rospy.get_param("~button_b", 1)
+        self.button_y = rospy.get_param("~button_y", 3)
         self.linear = rospy.get_param("~axis_linear", 4)
         self.angular = rospy.get_param("~axis_angular", 3)
         self.a_scale = rospy.get_param("~scale_angular", 75.0)
@@ -26,8 +27,9 @@ class Teleop:
         twist.angular.z = self.a_scale * joy.axes[self.angular]
         twist.linear.x = self.l_scale * joy.axes[self.linear]
         button.reset = joy.buttons[self.button_x]
-        button.mode = joy.buttons[self.button_a]
+        button.debug = joy.buttons[self.button_a]
         button.stop = joy.buttons[self.button_b]
+        button.mode = joy.buttons[self.button_y]
         self.vel_pub.publish(twist)
         self.button_pub.publish(button)
 

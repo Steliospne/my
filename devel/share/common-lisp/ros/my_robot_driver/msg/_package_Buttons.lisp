@@ -5,4 +5,6 @@
           MODE
           STOP-VAL
           STOP
+          DEBUG-VAL
+          DEBUG
 ))

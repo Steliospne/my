@@ -28,6 +28,8 @@ struct Odom_data_
     , y(0.0)
     , theta(0.0)
     , d_theta(0.0)
+    , vel_l(0.0)
+    , vel_r(0.0)
     , counter_l(0)
     , counter_r(0)  {
     }
@@ -36,6 +38,8 @@ struct Odom_data_
     , y(0.0)
     , theta(0.0)
     , d_theta(0.0)
+    , vel_l(0.0)
+    , vel_r(0.0)
     , counter_l(0)
     , counter_r(0)  {
   (void)_alloc;
@@ -54,6 +58,12 @@ struct Odom_data_
 
    typedef double _d_theta_type;
   _d_theta_type d_theta;
+
+   typedef double _vel_l_type;
+  _vel_l_type vel_l;
+
+   typedef double _vel_r_type;
+  _vel_r_type vel_r;
 
    typedef uint16_t _counter_l_type;
   _counter_l_type counter_l;
@@ -94,6 +104,8 @@ bool operator==(const ::my_robot_driver::Odom_data_<ContainerAllocator1> & lhs, 
     lhs.y == rhs.y &&
     lhs.theta == rhs.theta &&
     lhs.d_theta == rhs.d_theta &&
+    lhs.vel_l == rhs.vel_l &&
+    lhs.vel_r == rhs.vel_r &&
     lhs.counter_l == rhs.counter_l &&
     lhs.counter_r == rhs.counter_r;
 }
@@ -152,12 +164,12 @@ struct MD5Sum< ::my_robot_driver::Odom_data_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "7cb54c3a5884441715ff3e84859cb042";
+    return "4e66c9f8493a867e4988030ed11fbd23";
   }
 
   static const char* value(const ::my_robot_driver::Odom_data_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x7cb54c3a58844417ULL;
-  static const uint64_t static_value2 = 0x15ff3e84859cb042ULL;
+  static const uint64_t static_value1 = 0x4e66c9f8493a867eULL;
+  static const uint64_t static_value2 = 0x4988030ed11fbd23ULL;
 };
 
 template<class ContainerAllocator>
@@ -181,6 +193,8 @@ struct Definition< ::my_robot_driver::Odom_data_<ContainerAllocator> >
 "float64 y\n"
 "float64 theta\n"
 "float64 d_theta\n"
+"float64 vel_l\n"
+"float64 vel_r\n"
 "uint16 counter_l\n"
 "uint16 counter_r\n"
 ;
@@ -205,6 +219,8 @@ namespace serialization
       stream.next(m.y);
       stream.next(m.theta);
       stream.next(m.d_theta);
+      stream.next(m.vel_l);
+      stream.next(m.vel_r);
       stream.next(m.counter_l);
       stream.next(m.counter_r);
     }
@@ -233,6 +249,10 @@ struct Printer< ::my_robot_driver::Odom_data_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.theta);
     s << indent << "d_theta: ";
     Printer<double>::stream(s, indent + "  ", v.d_theta);
+    s << indent << "vel_l: ";
+    Printer<double>::stream(s, indent + "  ", v.vel_l);
+    s << indent << "vel_r: ";
+    Printer<double>::stream(s, indent + "  ", v.vel_r);
     s << indent << "counter_l: ";
     Printer<uint16_t>::stream(s, indent + "  ", v.counter_l);
     s << indent << "counter_r: ";

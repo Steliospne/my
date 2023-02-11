@@ -26,12 +26,14 @@ struct Buttons_
   Buttons_()
     : reset(false)
     , mode(false)
-    , stop(false)  {
+    , stop(false)
+    , debug(false)  {
     }
   Buttons_(const ContainerAllocator& _alloc)
     : reset(false)
     , mode(false)
-    , stop(false)  {
+    , stop(false)
+    , debug(false)  {
   (void)_alloc;
     }
 
@@ -45,6 +47,9 @@ struct Buttons_
 
    typedef uint8_t _stop_type;
   _stop_type stop;
+
+   typedef uint8_t _debug_type;
+  _debug_type debug;
 
 
 
@@ -77,7 +82,8 @@ bool operator==(const ::my_robot_driver::Buttons_<ContainerAllocator1> & lhs, co
 {
   return lhs.reset == rhs.reset &&
     lhs.mode == rhs.mode &&
-    lhs.stop == rhs.stop;
+    lhs.stop == rhs.stop &&
+    lhs.debug == rhs.debug;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -134,12 +140,12 @@ struct MD5Sum< ::my_robot_driver::Buttons_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d5eb4537e3fc1caf4d9efa0e1fbc2aa5";
+    return "a70f11db20213bb4fddba7dccd32ec5f";
   }
 
   static const char* value(const ::my_robot_driver::Buttons_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd5eb4537e3fc1cafULL;
-  static const uint64_t static_value2 = 0x4d9efa0e1fbc2aa5ULL;
+  static const uint64_t static_value1 = 0xa70f11db20213bb4ULL;
+  static const uint64_t static_value2 = 0xfddba7dccd32ec5fULL;
 };
 
 template<class ContainerAllocator>
@@ -162,6 +168,7 @@ struct Definition< ::my_robot_driver::Buttons_<ContainerAllocator> >
 "bool reset\n"
 "bool mode\n"
 "bool stop\n"
+"bool debug\n"
 ;
   }
 
@@ -183,6 +190,7 @@ namespace serialization
       stream.next(m.reset);
       stream.next(m.mode);
       stream.next(m.stop);
+      stream.next(m.debug);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -207,6 +215,8 @@ struct Printer< ::my_robot_driver::Buttons_<ContainerAllocator> >
     Printer<uint8_t>::stream(s, indent + "  ", v.mode);
     s << indent << "stop: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.stop);
+    s << indent << "debug: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.debug);
   }
 };
 

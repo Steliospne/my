@@ -21,6 +21,7 @@ class Buttons {
       this.reset = null;
       this.mode = null;
       this.stop = null;
+      this.debug = null;
     }
     else {
       if (initObj.hasOwnProperty('reset')) {
@@ -41,6 +42,12 @@ class Buttons {
       else {
         this.stop = false;
       }
+      if (initObj.hasOwnProperty('debug')) {
+        this.debug = initObj.debug
+      }
+      else {
+        this.debug = false;
+      }
     }
   }
 
@@ -52,6 +59,8 @@ class Buttons {
     bufferOffset = _serializer.bool(obj.mode, buffer, bufferOffset);
     // Serialize message field [stop]
     bufferOffset = _serializer.bool(obj.stop, buffer, bufferOffset);
+    // Serialize message field [debug]
+    bufferOffset = _serializer.bool(obj.debug, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -65,11 +74,13 @@ class Buttons {
     data.mode = _deserializer.bool(buffer, bufferOffset);
     // Deserialize message field [stop]
     data.stop = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [debug]
+    data.debug = _deserializer.bool(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 3;
+    return 4;
   }
 
   static datatype() {
@@ -79,7 +90,7 @@ class Buttons {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'd5eb4537e3fc1caf4d9efa0e1fbc2aa5';
+    return 'a70f11db20213bb4fddba7dccd32ec5f';
   }
 
   static messageDefinition() {
@@ -89,6 +100,7 @@ class Buttons {
     bool reset
     bool mode
     bool stop
+    bool debug
     `;
   }
 
@@ -117,6 +129,13 @@ class Buttons {
     }
     else {
       resolved.stop = false
+    }
+
+    if (msg.debug !== undefined) {
+      resolved.debug = msg.debug;
+    }
+    else {
+      resolved.debug = false
     }
 
     return resolved;

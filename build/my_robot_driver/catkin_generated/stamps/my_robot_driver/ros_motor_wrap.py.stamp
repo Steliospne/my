@@ -17,23 +17,29 @@ class MotorDriverROSWrapper:
         rospy.Subscriber("/button_command", Buttons, self.callback_button_command)
         self.motor_state_pub = rospy.Publisher("/motor_info", Motor_info, queue_size=10)
         rospy.Timer(rospy.Duration(1.0/publish_motor_info_frequency), self.publish_motor_state)
+        self.mode = 1
 
     def stop(self):
         self.motor.stop()
 
     def callback_button_command(self, data):
-        if data.mode == 1:
-            pass
-        elif data.stop == 1:
+        if data.mode == 1 and self.mode == 1:
+            self.mode = 0
+            print("Autonomous Mode")
+        elif data.mode == 1 and self.mode == 0:
+            self.mode = 1
+            print("Manual Mode")
+        
+        if data.stop == 1:
             rospy.signal_shutdown("EMERGENCY STOP!")
     
-    def publish_moto_state(self, event=None):
+    def publish_motor_state(self, event=None):
         msg = Motor_info()
         msg.state = self.motor.get_state()
         self.motor_state_pub.publish(msg)
 
     def callback_speed_command(self, data):
-        self.motor.move_command(data.linear.x, data.angular.z)
+        self.motor.move_command(data.linear.x, data.angular.z, mode=self.mode)
 
 if __name__ == "__main__":
     rospy.init_node("motor_driver")

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import math
+import time
 
 class odometry():
 
@@ -13,6 +14,9 @@ class odometry():
 		self.x = 0
 		self.y = 0
 		self.theta = 0
+		self.left_speed = 0
+		self.right_speed = 0
+		self.last_time = time.time()
 		
 		self.meters_per_tick_left = (2 * math.pi * self.left_enc.radius) / (left_enc.ticks_p_revol)
 		self.meters_per_tick_right = (2 * math.pi * self.right_enc.radius) / (right_enc.ticks_p_revol)
@@ -36,7 +40,15 @@ class odometry():
 		self.theta = self.theta + theta_dt
 		self.theta = self.theta % (2 * math.pi)
 
-		return self.x, self.y, self.theta
+		current_time = time.time()
+		time_elapsed = current_time - self.last_time
+		self.last_time = current_time
+		
+		self.left_speed = dl / time_elapsed
+		self.right_speed = dr / time_elapsed
+
+		return self.x, self.y, self.theta, self.left_speed, self.right_speed
+
 
 	def resetPose(self):
 		self.x = 0
@@ -45,3 +57,6 @@ class odometry():
     
 	def getPose(self):
 		return self.x, self.y, self.theta
+
+	def getSpeed(self):
+		return self.left_speed, self.right_speed
